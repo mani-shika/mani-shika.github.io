@@ -1,4 +1,15 @@
 // ═══════════════════════════════════════════
+// RESUME BUTTON
+// ═══════════════════════════════════════════
+function handleResume(e) {
+  e.preventDefault();
+  // Replace the URL below once you upload your resume PDF to Google Drive
+  // Right-click PDF in Drive → Share → Anyone with link → copy link → paste here
+  const resumeUrl = 'assets/resume.pdf'; // or your Google Drive share link
+  window.open(resumeUrl, '_blank');
+}
+
+// ═══════════════════════════════════════════
 // CUSTOM CURSOR
 // ═══════════════════════════════════════════
 const ring = document.getElementById('cursorRing');
