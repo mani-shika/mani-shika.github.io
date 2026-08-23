@@ -90,12 +90,9 @@ img { display: block; max-width: 100%; }
 .btn-ghost:hover { color: var(--green-accent); }
 
 /* HERO RIGHT */
-.hero-right { flex: 0 0 400px; position: relative; display: flex; align-items: center; justify-content: center; min-height: 420px; }
+.hero-right { flex: 0 0 360px; display: flex; align-items: center; justify-content: center; position: relative; }
 .photo-glow { position: absolute; width: 340px; height: 340px; background: radial-gradient(circle, rgba(74,122,46,0.18) 0%, transparent 70%); border-radius: 50%; }
-.hero-photo { width: 260px; height: 260px; border-radius: 50%; object-fit: cover; object-position: top center; position: relative; z-index: 1; }
-.float-badge { position: absolute; background: var(--text-dark); color: var(--text-white); font-size: 12px; font-weight: 500; padding: 8px 16px; border-radius: 999px; display: flex; align-items: center; gap: 6px; z-index: 2; white-space: nowrap; }
-.badge-top { top: 20px; right: -10px; }
-.badge-bot { bottom: 60px; left: -20px; }
+.hero-photo { width: 290px; height: 290px; border-radius: 50%; object-fit: cover; object-position: top center; position: relative; z-index: 1; }
 
 /* MARQUEE */
 .marquee-strip { background: var(--bg-dark); height: 52px; overflow: hidden; display: flex; align-items: center; }
