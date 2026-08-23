@@ -1,15 +1,4 @@
 // ═══════════════════════════════════════════
-// RESUME BUTTON
-// ═══════════════════════════════════════════
-function handleResume(e) {
-  e.preventDefault();
-  // Replace the URL below once you upload your resume PDF to Google Drive
-  // Right-click PDF in Drive → Share → Anyone with link → copy link → paste here
-  const resumeUrl = 'assets/resume.pdf'; // or your Google Drive share link
-  window.open(resumeUrl, '_blank');
-}
-
-// ═══════════════════════════════════════════
 // CUSTOM CURSOR
 // ═══════════════════════════════════════════
 const ring = document.getElementById('cursorRing');
@@ -98,3 +87,127 @@ if (formSubmit) {
     formNote.style.color = 'var(--green-accent)';
   });
 }
+
+// ═══════════════════════════════════════════
+// DARK MODE + PARTICLE CANVAS
+// ═══════════════════════════════════════════
+const themeToggle = document.getElementById('themeToggle');
+const toggleIcon  = document.getElementById('toggleIcon');
+const thumb       = document.querySelector('.toggle-thumb');
+const canvas      = document.getElementById('bgCanvas');
+const ctx         = canvas ? canvas.getContext('2d') : null;
+
+// -- Particle system
+let particles = [];
+let animFrame;
+
+function resizeCanvas() {
+  if (!canvas) return;
+  canvas.width  = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+
+function randomBetween(a, b) { return a + Math.random() * (b - a); }
+
+function createParticles() {
+  particles = [];
+  const count = Math.floor((window.innerWidth * window.innerHeight) / 8000);
+  for (let i = 0; i < count; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: randomBetween(0.5, 2.2),
+      dx: randomBetween(-0.15, 0.15),
+      dy: randomBetween(-0.2, -0.05),
+      alpha: randomBetween(0.3, 1),
+      pulse: Math.random() * Math.PI * 2,
+      pulseSpeed: randomBetween(0.005, 0.02),
+      color: Math.random() > 0.6
+        ? `rgba(77,159,255,`    // blue
+        : Math.random() > 0.5
+          ? `rgba(120,80,255,`  // purple
+          : `rgba(0,220,180,`   // teal
+    });
+  }
+}
+
+function drawParticles() {
+  if (!ctx || !canvas) return;
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  particles.forEach(p => {
+    p.pulse += p.pulseSpeed;
+    const a = p.alpha * (0.6 + 0.4 * Math.sin(p.pulse));
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = p.color + a + ')';
+    ctx.fill();
+
+    // draw faint connection lines between nearby particles
+    particles.forEach(q => {
+      const dist = Math.hypot(p.x - q.x, p.y - q.y);
+      if (dist < 100) {
+        ctx.beginPath();
+        ctx.moveTo(p.x, p.y);
+        ctx.lineTo(q.x, q.y);
+        ctx.strokeStyle = `rgba(77,159,255,${0.04 * (1 - dist / 100)})`;
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
+      }
+    });
+
+    p.x += p.dx;
+    p.y += p.dy;
+    if (p.y < -5)  p.y = canvas.height + 5;
+    if (p.x < -5)  p.x = canvas.width  + 5;
+    if (p.x > canvas.width  + 5) p.x = -5;
+  });
+
+  animFrame = requestAnimationFrame(drawParticles);
+}
+
+function startParticles() {
+  resizeCanvas();
+  createParticles();
+  drawParticles();
+}
+
+function stopParticles() {
+  cancelAnimationFrame(animFrame);
+  if (ctx && canvas) ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+// -- Toggle logic
+let isDark = localStorage.getItem('theme') === 'dark';
+
+function applyTheme(dark, animate) {
+  isDark = dark;
+  document.body.classList.toggle('dark', dark);
+  toggleIcon.textContent = dark ? '🌙' : '☀️';
+  localStorage.setItem('theme', dark ? 'dark' : 'light');
+
+  // set CSS var for swing animation end position
+  thumb.style.setProperty('--tx', dark ? '24px' : '0px');
+
+  if (animate) {
+    thumb.classList.remove('swing');
+    void thumb.offsetWidth; // force reflow
+    thumb.classList.add('swing');
+    setTimeout(() => thumb.classList.remove('swing'), 500);
+  }
+
+  if (dark) {
+    startParticles();
+  } else {
+    stopParticles();
+  }
+}
+
+// Apply saved theme on load (no animation)
+applyTheme(isDark, false);
+
+themeToggle.addEventListener('click', () => applyTheme(!isDark, true));
+
+window.addEventListener('resize', () => {
+  if (isDark) { resizeCanvas(); createParticles(); }
+});
