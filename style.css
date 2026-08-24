@@ -93,9 +93,6 @@ img { display: block; max-width: 100%; }
 .hero-right { flex: 0 0 400px; position: relative; display: flex; align-items: center; justify-content: center; min-height: 420px; }
 .photo-glow { position: absolute; width: 340px; height: 340px; background: radial-gradient(circle, rgba(74,122,46,0.18) 0%, transparent 70%); border-radius: 50%; }
 .hero-photo { width: 260px; height: 260px; border-radius: 50%; object-fit: cover; object-position: top center; position: relative; z-index: 1; }
-.float-badge { position: absolute; background: var(--text-dark); color: var(--text-white); font-size: 12px; font-weight: 500; padding: 8px 16px; border-radius: 999px; display: flex; align-items: center; gap: 6px; z-index: 2; white-space: nowrap; }
-.badge-top { top: 20px; right: -10px; }
-.badge-bot { bottom: 60px; left: -20px; }
 
 /* MARQUEE */
 .marquee-strip { background: var(--bg-dark); height: 52px; overflow: hidden; display: flex; align-items: center; }
@@ -224,28 +221,8 @@ img { display: block; max-width: 100%; }
 }
 
 /* ═══════════════════════════════════════════
-   DARK MODE VARIABLES
+   AURORA CANVAS
 ═══════════════════════════════════════════ */
-body.dark {
-  --bg-cream:       #070B14;
-  --bg-dark:        #0A0F1E;
-  --bg-yellow:      #0D1525;
-  --bg-green-band:  #0A1628;
-  --green-primary:  #4D9FFF;
-  --green-accent:   #6BB8FF;
-  --green-nav:      #1A3A6B;
-  --green-tag-bg:   #0F2040;
-  --green-tag-text: #6BB8FF;
-  --green-proj:     #0F2A50;
-  --text-dark:      #E8F0FF;
-  --text-body:      #A0B4CC;
-  --text-muted:     #4A6080;
-  --border-warm:    #1A2840;
-  --border-dark:    rgba(77,159,255,0.12);
-  --border-input:   #1A3050;
-}
-
-/* ── BG CANVAS (dark mode particles) */
 #bgCanvas {
   position: fixed;
   top: 0; left: 0;
@@ -253,52 +230,102 @@ body.dark {
   pointer-events: none;
   z-index: 0;
   opacity: 0;
-  transition: opacity 0.6s ease;
+  transition: opacity 0.8s ease;
 }
 body.dark #bgCanvas { opacity: 1; }
 
-/* All content above canvas */
+/* All content sits above canvas */
 .navbar, .hero, .marquee-strip, .section,
-.section-contact, .footer, .mobile-menu {
+.section-contact, .footer, .mobile-menu,
+.cursor-ring {
   position: relative;
   z-index: 1;
 }
 
-/* ── DARK MODE OVERRIDES */
-body.dark .navbar { background: rgba(7,11,20,0.92); backdrop-filter: blur(16px); border-bottom-color: rgba(77,159,255,0.1); }
-body.dark .mobile-menu { background: #070B14; }
-body.dark .edu-card { background: #0D1830; border-color: rgba(77,159,255,0.12); }
-body.dark .skill-card { background: #0D1830; box-shadow: 0 2px 20px rgba(77,159,255,0.06); }
-body.dark .stag { background: #0A1525; border-color: rgba(77,159,255,0.2); color: #A0B4CC; }
-body.dark .proj-card { background: #0D1830; border-color: rgba(77,159,255,0.1); }
-body.dark .proj-card:hover { box-shadow: 0 12px 40px rgba(77,159,255,0.15); }
-body.dark .ptag { border-color: rgba(77,159,255,0.18); color: #5A8AAA; }
-body.dark .social-btn { border-color: #1A3050; color: #A0B4CC; }
-body.dark .social-btn:hover { background: #1A3050; color: #E8F0FF; }
-body.dark .cert-link { color: #4D9FFF; }
-body.dark .form-input { color: #E8F0FF; }
-body.dark .form-input::placeholder { color: #2A4060; }
-body.dark .contact-band { background: #0A1628; border-bottom: 1px solid rgba(77,159,255,0.1); }
-body.dark .footer { background: #050810; }
-body.dark .footer-nav a { color: rgba(160,180,204,0.5); }
-body.dark .footer-nav a:hover { color: #E8F0FF; }
-body.dark .photo-glow { background: radial-gradient(circle, rgba(77,159,255,0.2) 0%, transparent 70%); }
-body.dark .cursor-ring { border-color: #4D9FFF; }
-body.dark .cursor-ring.hovered { background: rgba(77,159,255,0.12); border-color: #6BB8FF; }
-body.dark .h1-line:not(.h1-italic) { color: #E8F0FF; }
-body.dark .nav-logo { color: #E8F0FF; }
-body.dark .hero-sub { color: #7090AA; }
-body.dark .float-badge { background: #0D1830; color: #A0B4CC; }
-body.dark .exp-company { color: #C0D0E0; }
-body.dark .exp-role { color: #D8E8FF; }
-body.dark .exp-bullets li { color: #7090AA; }
-body.dark .section-heading:not(.light) { color: #D8E8FF; }
-body.dark .contact-heading { color: #D8E8FF; }
-body.dark .cert-org { color: #C0D0E0; }
-body.dark .cert-name { color: #7090AA; }
-body.dark .about-p1 { color: #7090AA; }
+/* ═══════════════════════════════════════════
+   DARK MODE VARIABLES
+═══════════════════════════════════════════ */
+body.dark {
+  --bg-cream:       transparent;
+  --bg-dark:        rgba(4, 7, 18, 0.85);
+  --bg-yellow:      rgba(6, 10, 25, 0.9);
+  --bg-green-band:  rgba(5, 10, 30, 0.95);
+  --green-primary:  #4D9FFF;
+  --green-accent:   #6BB8FF;
+  --green-nav:      #1A3A6B;
+  --green-tag-bg:   rgba(15, 40, 80, 0.8);
+  --green-tag-text: #6BB8FF;
+  --green-proj:     rgba(10, 30, 70, 0.9);
+  --text-dark:      #E8F0FF;
+  --text-body:      #8AA0BB;
+  --text-muted:     #3A5070;
+  --border-warm:    rgba(30, 50, 90, 0.6);
+  --border-dark:    rgba(77,159,255,0.1);
+  --border-input:   rgba(30, 60, 100, 0.8);
+}
 
-/* ── THEME TOGGLE BUTTON */
+/* Section backgrounds become glass in dark mode */
+body.dark .section-light  { background: rgba(5, 8, 20, 0.75); backdrop-filter: blur(2px); }
+body.dark .section-dark   { background: rgba(3, 5, 14, 0.85); backdrop-filter: blur(2px); }
+body.dark .section-yellow { background: rgba(6, 9, 22, 0.80); backdrop-filter: blur(2px); }
+body.dark .section-contact{ background: transparent; }
+body.dark .footer { background: rgba(2, 3, 10, 0.92); }
+body.dark .navbar {
+  background: rgba(4, 7, 18, 0.88);
+  backdrop-filter: blur(20px);
+  border-bottom-color: rgba(77,159,255,0.08);
+}
+body.dark .mobile-menu { background: rgba(4,7,18,0.96); }
+
+/* Cards */
+body.dark .edu-card   { background: rgba(10,18,45,0.7); border-color: rgba(77,159,255,0.12); }
+body.dark .skill-card { background: rgba(10,18,45,0.7); box-shadow: 0 2px 20px rgba(77,159,255,0.05); }
+body.dark .proj-card  { background: rgba(8,14,36,0.8);  border-color: rgba(77,159,255,0.1); }
+body.dark .proj-card:hover { box-shadow: 0 12px 40px rgba(77,159,255,0.15); transform: translateY(-5px); }
+
+/* Text */
+body.dark .h1-line:not(.h1-italic) { color: #D8EAFF; }
+body.dark .section-heading:not(.light) { color: #C8DCFF; }
+body.dark .contact-heading { color: #C8DCFF; }
+body.dark .hero-sub   { color: #6080A0; }
+body.dark .about-p1   { color: #6080A0; }
+body.dark .exp-company{ color: #B0C8E8; }
+body.dark .exp-role   { color: #C8DCFF; }
+body.dark .exp-bullets li { color: #6080A0; }
+body.dark .cert-org   { color: #B0C8E8; }
+body.dark .cert-name  { color: #6080A0; }
+body.dark .nav-logo   { color: #D8EAFF; }
+body.dark .nav-links a{ color: #8AA8C8; }
+body.dark .footer-name{ color: #D8EAFF; }
+
+/* Tags */
+body.dark .stag { background: rgba(10,25,60,0.8); border-color: rgba(77,159,255,0.18); color: #7090B0; }
+body.dark .ptag { border-color: rgba(77,159,255,0.15); color: #4A6888; }
+body.dark .etag { background: rgba(15,40,80,0.8); color: #5A90C0; }
+
+/* Buttons & links */
+body.dark .social-btn { border-color: rgba(40,70,110,0.8); color: #8AA8C8; }
+body.dark .social-btn:hover { background: rgba(20,50,100,0.8); color: #D8EAFF; }
+body.dark .cert-link  { color: #4D9FFF; }
+body.dark .btn-ghost  { color: #8AA8C8; }
+body.dark .btn-ghost:hover { color: #6BB8FF; }
+body.dark .contact-band { background: rgba(5,10,30,0.95); border-bottom: 1px solid rgba(77,159,255,0.08); }
+
+/* Form */
+body.dark .form-input { color: #D8EAFF; }
+body.dark .form-input::placeholder { color: #2A4060; }
+body.dark .form-label { color: #3A5A80; }
+
+/* Cursor */
+body.dark .cursor-ring { border-color: #4D9FFF; }
+body.dark .cursor-ring.hovered { background: rgba(77,159,255,0.1); border-color: #6BB8FF; }
+
+/* Photo glow */
+body.dark .photo-glow { background: radial-gradient(circle, rgba(77,159,255,0.18) 0%, transparent 70%); }
+
+/* ═══════════════════════════════════════════
+   THEME TOGGLE — pill with sliding icon
+═══════════════════════════════════════════ */
 .theme-toggle {
   background: none;
   border: none;
@@ -306,23 +333,23 @@ body.dark .about-p1 { color: #7090AA; }
   padding: 0;
   display: flex;
   align-items: center;
-  margin-right: 8px;
+  margin-right: 10px;
 }
 
 .toggle-track {
-  width: 52px;
-  height: 28px;
-  background: #E8E4DC;
+  width: 56px;
+  height: 30px;
+  background: #E2DDD6;
   border-radius: 999px;
   position: relative;
-  transition: background 0.4s ease;
-  border: 1px solid rgba(0,0,0,0.1);
-  overflow: visible;
+  border: 1.5px solid rgba(0,0,0,0.08);
+  transition: background 0.4s ease, border-color 0.4s ease;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
 }
-
 body.dark .toggle-track {
-  background: #0D1830;
-  border-color: rgba(77,159,255,0.2);
+  background: #0A1628;
+  border-color: rgba(77,159,255,0.25);
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.4), 0 0 8px rgba(77,159,255,0.1);
 }
 
 .toggle-thumb {
@@ -336,33 +363,24 @@ body.dark .toggle-track {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
-  transform-origin: center center;
+  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+              background 0.4s ease,
+              box-shadow 0.4s ease;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.25);
 }
-
 body.dark .toggle-thumb {
-  transform: translateX(24px);
+  transform: translateX(26px);
   background: #1A3A6B;
-}
-
-/* Swing animation on click */
-.toggle-thumb.swing {
-  animation: thumbSwing 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-@keyframes thumbSwing {
-  0%   { transform: translateX(var(--tx, 0)) rotate(0deg); }
-  30%  { transform: translateX(var(--tx, 0)) rotate(-20deg) scale(1.1); }
-  60%  { transform: translateX(var(--tx, 0)) rotate(12deg) scale(1.05); }
-  80%  { transform: translateX(var(--tx, 0)) rotate(-6deg); }
-  100% { transform: translateX(var(--tx, 0)) rotate(0deg); }
+  box-shadow: 0 0 8px rgba(77,159,255,0.4);
 }
 
 .toggle-icon {
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1;
   display: block;
-  transition: transform 0.3s ease, opacity 0.3s ease;
   user-select: none;
+  transition: transform 0.3s ease;
 }
+/* Icon spins on switch */
+body.dark .toggle-icon  { transform: rotate(0deg); }
+body.light .toggle-icon { transform: rotate(180deg); }
