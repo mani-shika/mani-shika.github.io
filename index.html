@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,12 +17,27 @@
   <!-- NAVBAR -->
   <nav class="navbar" id="navbar">
     <a href="#hero" class="nav-logo">Manishika</a>
-    <div class="nav-links">
-      <a href="#about">about</a>
-      <a href="#experience">experience</a>
-      <a href="#projects">projects</a>
-      <a href="#skills">skills</a>
-      <a href="#contact" class="nav-cta">say hello</a>
+    <div class="nav-dock" id="navDock">
+      <a href="#about" class="dock-item" data-label="About">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span class="dock-label">About</span>
+      </a>
+      <a href="#experience" class="dock-item" data-label="Experience">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-4 0v2"/><path d="M8 7V5a2 2 0 0 1 4 0v2"/></svg>
+        <span class="dock-label">Experience</span>
+      </a>
+      <a href="#projects" class="dock-item" data-label="Projects">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        <span class="dock-label">Projects</span>
+      </a>
+      <a href="#skills" class="dock-item" data-label="Skills">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        <span class="dock-label">Skills</span>
+      </a>
+      <a href="#contact" class="dock-item" data-label="Say Hello">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <span class="dock-label">Say Hello</span>
+      </a>
     </div>
     <button class="nav-hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -219,6 +235,24 @@
     <div class="container">
       <p class="section-label reveal">04 / Projects</p>
       <h2 class="section-heading light reveal">Things I've built.</h2>
+      <!-- FEATURED PROJECT -->
+      <a href="https://github.com/mani-shika/jan-sahayak" target="_blank" class="proj-featured reveal">
+        <div class="proj-featured-img">
+          <img src="assets/jan-sahayak-mockup.svg" alt="Jan Sahayak mockup" />
+        </div>
+        <div class="proj-featured-info">
+          <div class="proj-featured-meta">
+            <span class="proj-featured-num">001 / AI · CIVIC TECH / MICROSERVICES</span>
+            <span class="proj-arrow-lg">↗</span>
+          </div>
+          <h3 class="proj-featured-title">Jan Sahayak</h3>
+          <p class="proj-featured-desc">Autonomous civic grievance platform that transforms a single smartphone photo into actionable municipal change in under 10 seconds. GPS-tagged images are routed through a Python AI engine for instant hazard identification and ward routing via PostGIS geospatial queries — deployed on AWS with full CI/CD.</p>
+          <div class="proj-featured-tags">
+            <span class="ptag">Java</span><span class="ptag">Spring Boot</span><span class="ptag">Python</span><span class="ptag">PostgreSQL/PostGIS</span><span class="ptag">AWS ECS</span><span class="ptag">Docker</span><span class="ptag">Flutter</span>
+          </div>
+        </div>
+      </a>
+
       <div class="projects-grid">
 
         <a href="https://github.com/mani-shika/LogPulse" target="_blank" class="proj-card reveal">
@@ -343,10 +377,6 @@
   <footer class="footer">
     <div class="container footer-inner">
       <p class="footer-name">Manishika</p>
-      <p class="visitor-counter">
-        <span class="visitor-eye">👁</span>
-        You are visitor <strong id="visitorCount"><span class="counter-loading">...</span></strong>
-      </p>
       <p class="footer-copy">© 2025 · Designed &amp; built with ❤️</p>
       <nav class="footer-nav">
         <a href="#about">About</a>
@@ -356,10 +386,6 @@
       </nav>
     </div>
   </footer>
-
-  <script src="script.js"></script>
-</body>
-</html>
 
   <script src="script.js"></script>
 </body>
