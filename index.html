@@ -11,8 +11,6 @@
 </head>
 <body>
 
-  <canvas id="bgCanvas"></canvas>
-
   <div class="cursor-ring" id="cursorRing"></div>
 
   <!-- NAVBAR -->
@@ -25,13 +23,6 @@
       <a href="#skills">skills</a>
       <a href="#contact" class="nav-cta">say hello</a>
     </div>
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-      <div class="toggle-track">
-        <div class="toggle-thumb" id="toggleThumb">
-          <span class="toggle-icon" id="toggleIcon">☀️</span>
-        </div>
-      </div>
-    </button>
     <button class="nav-hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -69,6 +60,12 @@
     <div class="hero-right reveal" style="animation-delay:.3s">
       <div class="photo-glow"></div>
       <img src="assets/profile.jpg" alt="Manishika" class="hero-photo" />
+      <div class="float-badge badge-top">
+        <span class="fb-icon">🎓</span> B.Tech CSE
+      </div>
+      <div class="float-badge badge-bot">
+        <span class="fb-icon">📍</span> Amity University
+      </div>
     </div>
   </section>
 
@@ -346,6 +343,10 @@
   <footer class="footer">
     <div class="container footer-inner">
       <p class="footer-name">Manishika</p>
+      <p class="visitor-counter">
+        <span class="visitor-eye">👁</span>
+        You are visitor <strong id="visitorCount"><span class="counter-loading">...</span></strong>
+      </p>
       <p class="footer-copy">© 2025 · Designed &amp; built with ❤️</p>
       <nav class="footer-nav">
         <a href="#about">About</a>
@@ -355,6 +356,10 @@
       </nav>
     </div>
   </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
 
   <script src="script.js"></script>
 </body>
