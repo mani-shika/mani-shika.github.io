@@ -89,46 +89,69 @@ if (formSubmit) {
 }
 
 // ═══════════════════════════════════════════
-// VISITOR COUNTER
+// DOCK — active state on scroll
 // ═══════════════════════════════════════════
-(async function initVisitorCounter() {
-  const el = document.getElementById('visitorCount');
-  if (!el) return;
+const dockItems = document.querySelectorAll('.dock-item');
+const dockSections = ['about','experience','projects','skills','contact'];
 
-  // Unique namespace:key — change 'manishika-portfolio' if you want a fresh count
-  const NAMESPACE = 'manishika-portfolio';
-  const KEY       = 'visitors';
-
-  function formatNumber(n) {
-    // Add ordinal suffix: 1st, 2nd, 3rd, 569th…
-    const s = ['th','st','nd','rd'];
-    const v = n % 100;
-    return n.toLocaleString() + (s[(v - 20) % 10] || s[v] || s[0]);
-  }
-
-  function animateCount(target) {
-    // Count up from ~target-30 to target for drama
-    const start = Math.max(1, target - 30);
-    let current = start;
-    const step = () => {
-      current = Math.min(current + 1, target);
-      el.innerHTML = `<span class="counter-revealed">${formatNumber(current)}</span>`;
-      if (current < target) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  }
-
-  try {
-    // Hit the counter — increments by 1 each visit
-    const res  = await fetch(`https://api.countapi.xyz/hit/${NAMESPACE}/${KEY}`);
-    const data = await res.json();
-    if (data && data.value) {
-      animateCount(data.value);
-    } else {
-      el.textContent = '—';
+const dockObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      dockItems.forEach(item => {
+        const href = item.getAttribute('href').replace('#','');
+        item.classList.toggle('active', href === id);
+      });
     }
-  } catch (err) {
-    // If API is down just hide gracefully
-    el.closest('.visitor-counter').style.display = 'none';
-  }
-})();
+  });
+}, { threshold: 0.4 });
+
+dockSections.forEach(id => {
+  const el = document.getElementById(id);
+  if (el) dockObserver.observe(el);
+});
+
+// ═══════════════════════════════════════════
+// FEATURED CARD — 3D TILT ON MOUSE MOVE
+// ═══════════════════════════════════════════
+const featCard = document.querySelector('.proj-featured');
+if (featCard) {
+  featCard.addEventListener('mousemove', (e) => {
+    const rect = featCard.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width  - 0.5;  // -0.5 to 0.5
+    const y = (e.clientY - rect.top)  / rect.height - 0.5;
+
+    const rotateX = (-y * 8).toFixed(2);   // max 8deg
+    const rotateY = ( x * 8).toFixed(2);
+
+    featCard.classList.add('tilting');
+    featCard.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02,1.02,1.02)`;
+  });
+
+  featCard.addEventListener('mouseleave', () => {
+    featCard.classList.remove('tilting');
+    featCard.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)';
+    featCard.style.transition = 'transform 0.5s ease, box-shadow 0.5s ease';
+  });
+
+  featCard.addEventListener('mouseenter', () => {
+    featCard.style.transition = 'box-shadow 0.3s ease';
+  });
+}
+
+// ═══════════════════════════════════════════
+// ALL PROJECT CARDS — subtle tilt
+// ═══════════════════════════════════════════
+document.querySelectorAll('.proj-card').forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width  - 0.5;
+    const y = (e.clientY - rect.top)  / rect.height - 0.5;
+    card.style.transform = `perspective(600px) rotateX(${(-y * 6).toFixed(2)}deg) rotateY(${(x * 6).toFixed(2)}deg) translateY(-4px)`;
+    card.style.transition = 'box-shadow 0.2s ease';
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = 'perspective(600px) rotateX(0) rotateY(0) translateY(0)';
+    card.style.transition = 'transform 0.4s ease, box-shadow 0.4s ease';
+  });
+});
