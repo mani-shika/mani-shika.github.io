@@ -1,46 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Manishika — Software Engineer</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
+  <canvas id="bgCanvas"></canvas>
   <div class="cursor-ring" id="cursorRing"></div>
 
   <!-- NAVBAR -->
   <nav class="navbar" id="navbar">
     <a href="#hero" class="nav-logo">Manishika</a>
     <div class="nav-dock" id="navDock">
-      <a href="#about" class="dock-item" data-label="About">
+      <a href="#about" class="dock-item" data-section="about">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
         <span class="dock-label">About</span>
       </a>
-      <a href="#experience" class="dock-item" data-label="Experience">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-4 0v2"/><path d="M8 7V5a2 2 0 0 1 4 0v2"/></svg>
+      <a href="#experience" class="dock-item" data-section="experience">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
         <span class="dock-label">Experience</span>
       </a>
-      <a href="#projects" class="dock-item" data-label="Projects">
+      <a href="#projects" class="dock-item" data-section="projects">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
         <span class="dock-label">Projects</span>
       </a>
-      <a href="#skills" class="dock-item" data-label="Skills">
+      <a href="#skills" class="dock-item" data-section="skills">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
         <span class="dock-label">Skills</span>
       </a>
-      <a href="#contact" class="dock-item" data-label="Say Hello">
+      <a href="#contact" class="dock-item" data-section="contact">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         <span class="dock-label">Say Hello</span>
       </a>
     </div>
-    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <div class="toggle-track">
+          <div class="toggle-thumb" id="toggleThumb">
+            <span class="toggle-icon" id="toggleIcon">☀️</span>
+          </div>
+        </div>
+      </button>
+      <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </nav>
 
   <div class="mobile-menu" id="mobileMenu">
@@ -67,20 +77,14 @@
         Building scalable systems at the intersection of<br>software engineering, AI, and cloud infrastructure.
       </p>
       <div class="hero-btns reveal" style="animation-delay:.45s">
-        <a href="assets/resume.pdf" target="_blank" class="btn-primary">View Resume</a>
-        <a href="#contact" class="btn-ghost">Get in touch <span class="arrow">↗</span></a>
+        <a href="assets/Updated_Resume (4).pdf" target="_blank" class="btn-primary">View Resume</a>
+        <a href="#contact" class="btn-ghost">Get in touch <span>↗</span></a>
       </div>
     </div>
-
     <div class="hero-right reveal" style="animation-delay:.3s">
       <div class="photo-glow"></div>
-      <img src="assets/profile.jpg" alt="Manishika" class="hero-photo" />
-      <div class="float-badge badge-top">
-        <span class="fb-icon">🎓</span> B.Tech CSE
-      </div>
-      <div class="float-badge badge-bot">
-        <span class="fb-icon">📍</span> Amity University
-      </div>
+      <img src="assets/profile.jpg" alt="Manishika" class="hero-photo" id="heroPhoto"/>
+      <img src="assets/memoji.svg" alt="Manishika memoji" class="hero-photo hero-memoji" id="heroMemoji"/>
     </div>
   </section>
 
@@ -114,7 +118,7 @@
         <h2 class="section-heading reveal">Where curiosity<br>meets craft.</h2>
       </div>
       <div class="about-right">
-        <p class="about-p about-p1 reveal">I'm a software engineer and machine learning enthusiast with a Bachelor's in Computer Science and Engineering from Amity University. I'm driven by the entire lifecycle of a product — from architecting scalable, high-performance infrastructure to integrating intelligent ML models.</p>
+        <p class="about-p about-p1 reveal">I'm a software engineer and machine learning enthusiast with a Bachelor's in Computer Science and Engineering. I'm driven by the entire lifecycle of a product — from architecting scalable, high-performance infrastructure to integrating intelligent ML models.</p>
         <p class="about-p about-p2 reveal">As a keen learner at the start of my career, I love getting my hands dirty across the stack. My technical foundation spans Java and React for robust full-stack development, alongside Python and Go for applied AI and cloud technologies.</p>
         <p class="about-p about-p2 reveal">When I'm not coding, you'll find me sketching landscape architecture and exploring designs.</p>
         <div class="social-links reveal">
@@ -147,7 +151,6 @@
     <div class="container">
       <p class="section-label reveal">02 / Experience</p>
       <h2 class="section-heading reveal">Where I've built things.</h2>
-
       <div class="exp-entry reveal">
         <div class="exp-left">
           <p class="exp-company">Fluxmap</p>
@@ -161,14 +164,11 @@
             <li>— Collaborated in an agile remote team to deliver production-ready features across the entire software development lifecycle.</li>
           </ul>
           <div class="exp-tags">
-            <span class="etag">JAVA · SPRING BOOT</span>
-            <span class="etag">REACT</span>
-            <span class="etag">POSTGRESQL</span>
+            <span class="etag">JAVA · SPRING BOOT</span><span class="etag">REACT</span><span class="etag">POSTGRESQL</span>
           </div>
         </div>
       </div>
       <div class="exp-divider"></div>
-
       <div class="exp-entry reveal">
         <div class="exp-left">
           <p class="exp-company">Gokul Infocare</p>
@@ -177,14 +177,12 @@
         <div class="exp-right">
           <p class="exp-role">Junior AI/ML Developer</p>
           <ul class="exp-bullets">
-            <li>— Built and integrated <span class="kw">REST APIs</span> with AI/ML backend services to enable predictive analytics features within production applications.</li>
-            <li>— Developed and fine-tuned <span class="kw">ML models</span> for predictive analytics, working across the full pipeline from data preprocessing to model deployment.</li>
-            <li>— Applied <span class="kw">Python</span> and its scientific stack (NumPy, Pandas, scikit-learn) to solve applied machine learning problems in a business context.</li>
+            <li>— Built and integrated <span class="kw">REST APIs</span> with AI/ML backend services to enable predictive analytics features.</li>
+            <li>— Developed and fine-tuned <span class="kw">ML models</span> working across the full pipeline from data preprocessing to deployment.</li>
+            <li>— Applied <span class="kw">Python</span> and its scientific stack (NumPy, Pandas, scikit-learn) to solve applied ML problems.</li>
           </ul>
           <div class="exp-tags">
-            <span class="etag">PYTHON</span>
-            <span class="etag">ML MODELS</span>
-            <span class="etag">API INTEGRATION</span>
+            <span class="etag">PYTHON</span><span class="etag">ML MODELS</span><span class="etag">API INTEGRATION</span>
           </div>
         </div>
       </div>
@@ -215,7 +213,7 @@
           <div class="skill-icon">☁️</div>
           <p class="skill-cat">Cloud &amp; DevOps</p>
           <div class="skill-tags">
-            <span class="stag">Docker</span><span class="stag">Render</span><span class="stag">PostgreSQL</span><span class="stag">REST APIs</span><span class="stag">CI/CD</span>
+            <span class="stag">Docker</span><span class="stag">AWS</span><span class="stag">PostgreSQL</span><span class="stag">Redis</span><span class="stag">CI/CD</span>
           </div>
         </div>
         <div class="skill-card reveal">
@@ -234,75 +232,137 @@
     <div class="container">
       <p class="section-label reveal">04 / Projects</p>
       <h2 class="section-heading light reveal">Things I've built.</h2>
-      <!-- FEATURED PROJECT -->
-      <a href="https://github.com/mani-shika/jan-sahayak" target="_blank" class="proj-featured reveal">
-        <div class="proj-featured-img">
-          <img src="assets/jan-sahayak-mockup.svg" alt="Jan Sahayak mockup" />
+
+      <!-- ══ CAROUSEL — first 4 projects with images ══ -->
+      <div class="proj-carousel-wrap reveal">
+        <div class="proj-carousel" id="projCarousel">
+
+          <a href="https://github.com/mani-shika/jan-sahayak" target="_blank" class="proj-slide">
+            <div class="proj-slide-img">
+              <img src="assets/proj-jan.jpg" alt="Jan Sahayak"/>
+            </div>
+            <div class="proj-slide-info">
+              <div class="proj-top"><span class="proj-num">001</span><span class="proj-arrow">↗</span></div>
+              <span class="proj-cat">AI · CIVIC TECH</span>
+              <h3 class="proj-title">Jan Sahayak</h3>
+              <p class="proj-desc">Autonomous civic grievance platform turning a smartphone photo into municipal action in under 10 seconds. Python AI engine + PostGIS routing deployed on AWS ECS.</p>
+              <div class="proj-tags"><span class="ptag">Java</span><span class="ptag">Spring Boot</span><span class="ptag">Python</span><span class="ptag">AWS ECS</span><span class="ptag">Docker</span></div>
+            </div>
+          </a>
+
+          <a href="https://github.com/mani-shika/LogPulse" target="_blank" class="proj-slide">
+            <div class="proj-slide-img">
+              <img src="assets/proj-logpulse.jpg" alt="LogPulse"/>
+            </div>
+            <div class="proj-slide-info">
+              <div class="proj-top"><span class="proj-num">002</span><span class="proj-arrow">↗</span></div>
+              <span class="proj-cat">DEVOPS · AI</span>
+              <h3 class="proj-title">LogPulse</h3>
+              <p class="proj-desc">AI-powered observability microservice that parses server crash logs and auto-generates bash remediation scripts using Gemini API.</p>
+              <div class="proj-tags"><span class="ptag">Java</span><span class="ptag">Spring Boot</span><span class="ptag">React</span><span class="ptag">Gemini API</span></div>
+            </div>
+          </a>
+
+          <a href="https://github.com/mani-shika/Medicos" target="_blank" class="proj-slide">
+            <div class="proj-slide-img">
+              <img src="assets/proj-medicos.jpg" alt="Medicos"/>
+            </div>
+            <div class="proj-slide-info">
+              <div class="proj-top"><span class="proj-num">003</span><span class="proj-arrow">↗</span></div>
+              <span class="proj-cat">FULLSTACK · HEALTHCARE</span>
+              <h3 class="proj-title">Medicos</h3>
+              <p class="proj-desc">Scalable healthcare backend with React AI chatbot. Role-based access control via Spring Security with JWT for secure API access.</p>
+              <div class="proj-tags"><span class="ptag">Java</span><span class="ptag">Spring Boot</span><span class="ptag">PostgreSQL</span><span class="ptag">RBAC</span></div>
+            </div>
+          </a>
+
+          <a href="https://github.com/mani-shika/hostel-issue-backend" target="_blank" class="proj-slide">
+            <div class="proj-slide-img">
+              <img src="assets/proj-hostel.jpg" alt="Hostel Issue Manager"/>
+            </div>
+            <div class="proj-slide-info">
+              <div class="proj-top"><span class="proj-num">004</span><span class="proj-arrow">↗</span></div>
+              <span class="proj-cat">BACKEND · DEVOPS</span>
+              <h3 class="proj-title">Hostel Issue Manager</h3>
+              <p class="proj-desc">Complaint management system streamlining hostel maintenance workflows. Containerized with Docker, deployed on Render with full REST API tracking.</p>
+              <div class="proj-tags"><span class="ptag">Spring Boot</span><span class="ptag">PostgreSQL</span><span class="ptag">Docker</span><span class="ptag">Render</span></div>
+            </div>
+          </a>
+
         </div>
-        <div class="proj-featured-info">
-          <div class="proj-featured-meta">
-            <span class="proj-featured-num">001 / AI · CIVIC TECH / MICROSERVICES</span>
-            <span class="proj-arrow-lg">↗</span>
-          </div>
-          <h3 class="proj-featured-title">Jan Sahayak</h3>
-          <p class="proj-featured-desc">Autonomous civic grievance platform that transforms a single smartphone photo into actionable municipal change in under 10 seconds. GPS-tagged images are routed through a Python AI engine for instant hazard identification and ward routing via PostGIS geospatial queries — deployed on AWS with full CI/CD.</p>
-          <div class="proj-featured-tags">
-            <span class="ptag">Java</span><span class="ptag">Spring Boot</span><span class="ptag">Python</span><span class="ptag">PostgreSQL/PostGIS</span><span class="ptag">AWS ECS</span><span class="ptag">Docker</span><span class="ptag">Flutter</span>
-          </div>
+
+        <!-- Carousel controls -->
+        <button class="carousel-btn carousel-prev" id="carouselPrev" aria-label="Previous">&#8592;</button>
+        <button class="carousel-btn carousel-next" id="carouselNext" aria-label="Next">&#8594;</button>
+
+        <!-- Dots -->
+        <div class="carousel-dots" id="carouselDots">
+          <button class="cdot active" data-idx="0"></button>
+          <button class="cdot" data-idx="1"></button>
+          <button class="cdot" data-idx="2"></button>
+          <button class="cdot" data-idx="3"></button>
         </div>
-      </a>
 
-      <div class="projects-grid">
-
-        <a href="https://github.com/mani-shika/LogPulse" target="_blank" class="proj-card reveal">
-          <div class="proj-top"><span class="proj-num">001</span><span class="proj-arrow">↗</span></div>
-          <span class="proj-cat">DEVOPS · AI</span>
-          <h3 class="proj-title">LogPulse</h3>
-          <p class="proj-desc">AI-powered observability microservice that parses server crash logs and auto-generates execution-ready bash remediation scripts, cutting manual incident resolution effort significantly.</p>
-          <div class="proj-tags"><span class="ptag">Java</span><span class="ptag">Spring Boot</span><span class="ptag">React</span><span class="ptag">Gemini API</span></div>
-        </a>
-
-        <a href="https://github.com/mani-shika/Medicos" target="_blank" class="proj-card reveal">
-          <div class="proj-top"><span class="proj-num">002</span><span class="proj-arrow">↗</span></div>
-          <span class="proj-cat">FULLSTACK · HEALTHCARE</span>
-          <h3 class="proj-title">Medicos</h3>
-          <p class="proj-desc">Scalable healthcare backend with a React AI chatbot. Features role-based access control via Spring Security with JWT architecture for secure, permission-scoped API access.</p>
-          <div class="proj-tags"><span class="ptag">Java</span><span class="ptag">Spring Boot</span><span class="ptag">PostgreSQL</span><span class="ptag">RBAC</span></div>
-        </a>
-
-        <a href="https://github.com/mani-shika/hostel-issue-backend" target="_blank" class="proj-card reveal">
-          <div class="proj-top"><span class="proj-num">003</span><span class="proj-arrow">↗</span></div>
-          <span class="proj-cat">BACKEND · DEVOPS</span>
-          <h3 class="proj-title">Hostel Issue Manager</h3>
-          <p class="proj-desc">Web-based complaint management system streamlining hostel maintenance workflows. Containerized with Docker and deployed to Render with full issue tracking via REST APIs.</p>
-          <div class="proj-tags"><span class="ptag">Spring Boot</span><span class="ptag">PostgreSQL</span><span class="ptag">Docker</span><span class="ptag">Render</span></div>
-        </a>
-
-        <a href="https://github.com/mani-shika/Smart-Energy-Consumption-Predictor" target="_blank" class="proj-card reveal">
-          <div class="proj-top"><span class="proj-num">004</span><span class="proj-arrow">↗</span></div>
-          <span class="proj-cat">ML · WEB APP</span>
-          <h3 class="proj-title">Smart Energy Predictor</h3>
-          <p class="proj-desc">AI-powered web app predicting building energy consumption using Gradient Boosting. Supports multiple building types with real-time forecasts and feature importance visualisation.</p>
-          <div class="proj-tags"><span class="ptag">Python</span><span class="ptag">Flask</span><span class="ptag">scikit-learn</span><span class="ptag">ML</span></div>
-        </a>
-
-        <a href="https://github.com/mani-shika/ecommerce-ml-model" target="_blank" class="proj-card reveal">
-          <div class="proj-top"><span class="proj-num">005</span><span class="proj-arrow">↗</span></div>
-          <span class="proj-cat">ML · DATA SCIENCE</span>
-          <h3 class="proj-title">E-Commerce Spend Predictor</h3>
-          <p class="proj-desc">Linear regression model predicting yearly customer spending from behavioural e-commerce data to drive data-informed marketing decisions.</p>
-          <div class="proj-tags"><span class="ptag">Python</span><span class="ptag">scikit-learn</span><span class="ptag">Pandas</span><span class="ptag">Seaborn</span></div>
-        </a>
-
-        <a href="https://github.com/mani-shika/house-price-predictor" target="_blank" class="proj-card reveal">
-          <div class="proj-top"><span class="proj-num">006</span><span class="proj-arrow">↗</span></div>
-          <span class="proj-cat">ML · STREAMLIT</span>
-          <h3 class="proj-title">House Price Predictor</h3>
-          <p class="proj-desc">Interactive Streamlit web app applying predictive ML models to real-world housing data with a clean, responsive UI for exploring price-driving features.</p>
-          <div class="proj-tags"><span class="ptag">Python</span><span class="ptag">Streamlit</span><span class="ptag">scikit-learn</span><span class="ptag">ML</span></div>
-        </a>
-
+        <!-- Drag hint -->
+        <p class="carousel-hint">← drag to slide →</p>
       </div>
+
+      <!-- View All toggle -->
+      <div class="view-all-wrap reveal">
+        <button class="btn-view-all" id="btnViewAll">
+          <span id="viewAllText">View all projects</span>
+          <svg id="viewAllIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+      </div>
+
+      <!-- Hidden grid — shows on View All click -->
+      <div class="projects-grid hidden-grid" id="allProjectsGrid">
+
+        <a href="https://github.com/mani-shika/Snipr" target="_blank" class="proj-card">
+          <div class="proj-card-img proj-card-img--placeholder"><span class="proj-img-coming">No preview</span></div>
+          <div class="proj-card-body">
+            <div class="proj-top"><span class="proj-num">005</span><span class="proj-arrow">↗</span></div>
+            <span class="proj-cat">BACKEND · SYSTEMS</span>
+            <h3 class="proj-title">Snipr</h3>
+            <p class="proj-desc">High-performance URL shortener with Base62 encoding, Redis caching, token-bucket rate limiting, and PostgreSQL click-analytics.</p>
+            <div class="proj-tags"><span class="ptag">Java</span><span class="ptag">Spring Boot</span><span class="ptag">Redis</span><span class="ptag">PostgreSQL</span><span class="ptag">Docker</span></div>
+          </div>
+        </a>
+
+        <a href="https://github.com/mani-shika/Smart-Energy-Consumption-Predictor" target="_blank" class="proj-card">
+          <div class="proj-card-img proj-card-img--placeholder"><span class="proj-img-coming">No preview</span></div>
+          <div class="proj-card-body">
+            <div class="proj-top"><span class="proj-num">006</span><span class="proj-arrow">↗</span></div>
+            <span class="proj-cat">ML · WEB APP</span>
+            <h3 class="proj-title">Smart Energy Predictor</h3>
+            <p class="proj-desc">AI-powered web app predicting building energy consumption using Gradient Boosting across multiple building types.</p>
+            <div class="proj-tags"><span class="ptag">Python</span><span class="ptag">Flask</span><span class="ptag">scikit-learn</span><span class="ptag">ML</span></div>
+          </div>
+        </a>
+
+        <a href="https://github.com/mani-shika/ecommerce-ml-model" target="_blank" class="proj-card">
+          <div class="proj-card-img proj-card-img--placeholder"><span class="proj-img-coming">No preview</span></div>
+          <div class="proj-card-body">
+            <div class="proj-top"><span class="proj-num">007</span><span class="proj-arrow">↗</span></div>
+            <span class="proj-cat">ML · DATA SCIENCE</span>
+            <h3 class="proj-title">E-Commerce Spend Predictor</h3>
+            <p class="proj-desc">Linear regression model predicting yearly customer spending from behavioural e-commerce data for data-driven marketing.</p>
+            <div class="proj-tags"><span class="ptag">Python</span><span class="ptag">scikit-learn</span><span class="ptag">Pandas</span><span class="ptag">Seaborn</span></div>
+          </div>
+        </a>
+
+        <a href="https://github.com/mani-shika/house-price-predictor" target="_blank" class="proj-card">
+          <div class="proj-card-img proj-card-img--placeholder"><span class="proj-img-coming">No preview</span></div>
+          <div class="proj-card-body">
+            <div class="proj-top"><span class="proj-num">008</span><span class="proj-arrow">↗</span></div>
+            <span class="proj-cat">ML · STREAMLIT</span>
+            <h3 class="proj-title">House Price Predictor</h3>
+            <p class="proj-desc">Interactive Streamlit web app applying predictive ML models to real-world housing data with a clean responsive UI.</p>
+            <div class="proj-tags"><span class="ptag">Python</span><span class="ptag">Streamlit</span><span class="ptag">scikit-learn</span><span class="ptag">ML</span></div>
+          </div>
+        </a>
+
+      </div><!-- /allProjectsGrid -->
     </div>
   </section>
 
@@ -312,30 +372,25 @@
       <p class="section-label reveal">05 / Certifications</p>
       <h2 class="section-heading reveal">Continuous learning.</h2>
       <div class="cert-list">
-
         <div class="cert-entry reveal">
           <div class="cert-left"><p class="cert-org">Accenture (Forage)</p><p class="cert-date">June 17, 2025</p></div>
           <div class="cert-right"><p class="cert-name">Software Engineering Job Simulation</p><a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/xhih9yFWsf6AYfngd/HNpZwZcuYwona2d8Y_xhih9yFWsf6AYfngd_EJxSuZREm5QBQE8hy_1750179066890_completion_certificate.pdf" target="_blank" class="cert-link">View Certificate ↗</a></div>
         </div>
         <div class="cert-divider"></div>
-
         <div class="cert-entry reveal">
           <div class="cert-left"><p class="cert-org">Deloitte (Forage)</p><p class="cert-date">June 21, 2025</p></div>
           <div class="cert-right"><p class="cert-name">Technology Job Simulation</p><a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/9PBTqmSxAf6zZTseP/udmxiyHeqYQLkTPvf_9PBTqmSxAf6zZTseP_EJxSuZREm5QBQE8hy_1750512344055_completion_certificate.pdf" target="_blank" class="cert-link">View Certificate ↗</a></div>
         </div>
         <div class="cert-divider"></div>
-
         <div class="cert-entry reveal">
           <div class="cert-left"><p class="cert-org">LinkedIn Learning</p><p class="cert-date">March 8, 2024</p></div>
           <div class="cert-right"><p class="cert-name">Cybersecurity Awareness: Cybersecurity Terminology</p><a href="https://www.linkedin.com/learning/certificates/c2fdd09a5a42320cebca8b75da4ac31dd2a88d877b40d0e9cf8545099a0e63fa" target="_blank" class="cert-link">View Certificate ↗</a></div>
         </div>
         <div class="cert-divider"></div>
-
         <div class="cert-entry reveal">
           <div class="cert-left"><p class="cert-org">LinkedIn Learning</p><p class="cert-date">March 1, 2024</p></div>
           <div class="cert-right"><p class="cert-name">The Cybersecurity Threat Landscape</p><a href="https://www.linkedin.com/learning/certificates/cfa64afabac1ad227d415b07e7f3760340ce2b6f64c1af4b3f2dcde8cc403d7e" target="_blank" class="cert-link">View Certificate ↗</a></div>
         </div>
-
       </div>
     </div>
   </section>
@@ -356,11 +411,11 @@
       <div class="contact-right reveal">
         <div class="form-group">
           <label class="form-label">YOUR NAME</label>
-          <input type="text" class="form-input" placeholder="Jane Smith" id="fname" />
+          <input type="text" class="form-input" placeholder="Jane Smith" id="fname"/>
         </div>
         <div class="form-group">
           <label class="form-label">EMAIL ADDRESS</label>
-          <input type="email" class="form-input" placeholder="jane@company.com" id="femail" />
+          <input type="email" class="form-input" placeholder="jane@company.com" id="femail"/>
         </div>
         <div class="form-group">
           <label class="form-label">MESSAGE</label>
@@ -376,6 +431,9 @@
   <footer class="footer">
     <div class="container footer-inner">
       <p class="footer-name">Manishika</p>
+      <p class="visitor-counter">
+        <span>👁</span> You are visitor <strong id="visitorCount"><span class="counter-loading">...</span></strong>
+      </p>
       <p class="footer-copy">© 2025 · Designed &amp; built with ❤️</p>
       <nav class="footer-nav">
         <a href="#about">About</a>
