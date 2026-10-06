@@ -90,10 +90,12 @@ body.dark .toggle-thumb{transform:translateX(24px);background:#1A3A6B;box-shadow
 .btn-ghost:hover{color:var(--green-accent);}
 .hero-right{flex:0 0 360px;display:flex;align-items:center;justify-content:center;position:relative;}
 .photo-glow{position:absolute;width:320px;height:320px;background:radial-gradient(circle,rgba(74,122,46,.18) 0%,transparent 70%);border-radius:50%;}
-.hero-photo{width:280px;height:280px;border-radius:50%;object-fit:cover;object-position:top center;position:relative;z-index:1;}
+.hero-photo{width:280px;height:280px;border-radius:50%;object-fit:cover;object-position:top center;position:relative;z-index:1;display:block;}
 .hero-memoji{display:none;width:280px;height:280px;border-radius:50%;object-fit:cover;position:relative;z-index:1;}
-body.dark .hero-photo{display:none;}
-body.dark .hero-memoji{display:block;}
+body:not(.dark) .hero-photo{display:block !important;}
+body:not(.dark) .hero-memoji{display:none !important;}
+body.dark .hero-photo{display:none !important;}
+body.dark .hero-memoji{display:block !important;}
 
 /* ══ MARQUEE ══ */
 .marquee-strip{background:var(--bg-dark);height:52px;overflow:hidden;display:flex;align-items:center;}
@@ -165,8 +167,8 @@ body.dark .hero-memoji{display:block;}
 .proj-card-img{width:100%;height:160px;overflow:hidden;position:relative;background:#060E1C;}
 .proj-card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease;}
 .proj-card:hover .proj-card-img img{transform:scale(1.06);}
-.proj-card-img--placeholder{display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#0D1830 0%,#0A1520 100%);border-bottom:1px solid rgba(255,255,255,.05);}
-.proj-img-coming{font-size:11px;color:rgba(255,255,255,.2);letter-spacing:.06em;text-transform:uppercase;}
+.proj-card-img--placeholder{display:none;}
+.proj-img-coming{display:none;}
 
 /* Card body */
 .proj-card-body{padding:20px;}
@@ -451,4 +453,28 @@ body.dark .btn-view-all:hover { border-color: #4D9FFF; color: #4D9FFF; backgroun
 }
 @media(max-width: 480px) {
   .proj-slide { flex: 0 0 92%; min-width: 92%; }
+}
+
+/* ══ CARDS WITHOUT IMAGE — full height content ══ */
+.proj-card-body--full {
+  padding: 28px 24px;
+  flex: 1;
+}
+/* When no image, make card feel spacious and intentional */
+.proj-card:has(.proj-card-body--full) {
+  background: linear-gradient(135deg, #0D1830 0%, #0A1624 100%);
+}
+/* Subtle top accent line instead of image */
+.proj-card:has(.proj-card-body--full)::before {
+  content: '';
+  display: block;
+  height: 3px;
+  background: linear-gradient(90deg, var(--green-proj), transparent);
+  border-radius: 3px 3px 0 0;
+}
+body.dark .proj-card:has(.proj-card-body--full) {
+  background: linear-gradient(135deg, rgba(8,16,36,.9) 0%, rgba(6,12,28,.9) 100%);
+}
+body.dark .proj-card:has(.proj-card-body--full)::before {
+  background: linear-gradient(90deg, #4D9FFF, transparent);
 }
